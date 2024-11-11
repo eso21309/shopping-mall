@@ -3,11 +3,10 @@ import 'shopping_mall.dart';
 
 void main() {
   ShoppingMall shoppingMall = ShoppingMall();
-  //이 생성자의 구조가 이해가 안됨. 또 대문자와 소문자의 차이
   bool isTerminated = false;
-  //이건 무슨뜻이지??
+  //isTerminated > 종료될때
 
-//while 구분이 이해가 안됨
+//!isTerminated 종료되지 않았을때 while구문이 돌아간다는 뜻
   while (!isTerminated) {
     print('----------------------------------------------------');
     print(
@@ -16,7 +15,7 @@ void main() {
 
     String? input = stdin.readLineSync();
 
-//switch도 다시 공부 필요
+//switch는 각 케이스에 맞는 출력값이 나오는 것임. default값으로 케이스 외의 예외도 포함시킬 수 있음
     switch (input) {
       case '1':
         shoppingMall.showProducts();
@@ -25,8 +24,9 @@ void main() {
       case '3':
         shoppingMall.showTotal();
       case '4':
-        print('이용해 주셔서 감사합니다. 안녕히 가세요!');
         isTerminated = true;
+        print('이용해 주셔서 감사합니다. 안녕히 가세요!');
+
       default:
         print('지원하지 않는 기능입니다! 다시 시도해 주세요');
     }

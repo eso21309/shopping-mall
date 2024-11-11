@@ -7,7 +7,7 @@ class ShoppingMall {
   List<Product> products = [];
   int total = 0;
 
-  //생성자에 상품을 추가한다. 이유는?
+  //생성자에 상품을 추가한다. 이유는? 가독성때문이라고 함
   ShoppingMall() {
     products.add(Product('셔츠', 45000));
     products.add(Product('원피스', 30000));
@@ -17,24 +17,25 @@ class ShoppingMall {
   }
 
   //쇼핑몰에서 구현되어야 하는 기능에 대한 클래스 메소드를 정의한다.
-//상품 목록을 무조건 모두 보여줘야함! 그러려면? 반복적으로 저 프로덕트 값을 프린트해줘야함
+//상품 목록을 무조건 모두 보여줘야함! 그러려면? 반복문으로 값을 프린트해줘야함
   void showProducts() {
     for (final product in products) {
       print('${product.name} / ${product.price}원');
     }
   }
 
-//어려움...
   void addToCart() {
     print('상품 이름을 입력해 주세요!');
     String? name = stdin.readLineSync();
 
     print('상품 개수를 입력해 주세요!');
     String inputCount = stdin.readLineSync() ?? "";
-    // ?? "" 이 부분이 이해가 안감
+    // ?? "" 이 부분이 이해가 안감 null이라는 표시인가?
 
+    //try catch는 예외 구문임
     try {
-      Product product = products.firstWhere((product) => product.name == name);
+      Product product = products
+          .firstWhere((product) => product.name == name); //이 문장 구조가 좀 어려움
       int count = int.parse(inputCount);
 
       if (count > 0) {
